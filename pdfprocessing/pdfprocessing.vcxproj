@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B2484088-7C14-4B45-94DB-24922A6DF718}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>pdfprocessing</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PDFPROCESSING_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>podofo;podofo/base;podofo/base/util;zlib;freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/D "_CRT_SECURE_NO_DEPRECATE"  /D "_CRT_NONSTDC_NO_DEPRECATE" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>..\bin\pdfprocessing.dll</OutputFile>
+      <AdditionalDependencies>Ws2_32.lib;freetype\debug\freetype2410MT_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PDFPROCESSING_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/D "_CRT_SECURE_NO_DEPRECATE"  /D "_CRT_NONSTDC_NO_DEPRECATE" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>podofo;podofo/base;podofo/base/util;zlib;freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <OutputFile>..\bin\pdfprocessing.dll</OutputFile>
+      <AdditionalDependencies>Ws2_32.lib;freetype\release\freetype2410MT.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImageExtractor.h" />
+    <ClInclude Include="logger.h" />
+    <ClInclude Include="pdfprocessing.h" />
+    <ClInclude Include="processor.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ImageExtractor.cpp" />
+    <ClCompile Include="logger.cpp" />
+    <ClCompile Include="pdfprocessing.cpp" />
+    <ClCompile Include="podofo\base\PdfArray.cpp" />
+    <ClCompile Include="podofo\base\PdfCanvas.cpp" />
+    <ClCompile Include="podofo\base\PdfColor.cpp" />
+    <ClCompile Include="podofo\base\PdfContentsTokenizer.cpp" />
+    <ClCompile Include="podofo\base\PdfData.cpp" />
+    <ClCompile Include="podofo\base\PdfDataType.cpp" />
+    <ClCompile Include="podofo\base\PdfDate.cpp" />
+    <ClCompile Include="podofo\base\PdfDictionary.cpp" />
+    <ClCompile Include="podofo\base\PdfEncoding.cpp" />
+    <ClCompile Include="podofo\base\PdfEncodingFactory.cpp" />
+    <ClCompile Include="podofo\base\PdfEncrypt.cpp" />
+    <ClCompile Include="podofo\base\PdfError.cpp" />
+    <ClCompile Include="podofo\base\PdfFileStream.cpp" />
+    <ClCompile Include="podofo\base\PdfFilter.cpp" />
+    <ClCompile Include="podofo\base\PdfFiltersPrivate.cpp" />
+    <ClCompile Include="podofo\base\PdfImmediateWriter.cpp" />
+    <ClCompile Include="podofo\base\PdfInputDevice.cpp" />
+    <ClCompile Include="podofo\base\PdfInputStream.cpp" />
+    <ClCompile Include="podofo\base\PdfLocale.cpp" />
+    <ClCompile Include="podofo\base\PdfMemoryManagement.cpp" />
+    <ClCompile Include="podofo\base\PdfMemStream.cpp" />
+    <ClCompile Include="podofo\base\PdfName.cpp" />
+    <ClCompile Include="podofo\base\PdfObject.cpp" />
+    <ClCompile Include="podofo\base\PdfObjectStreamParserObject.cpp" />
+    <ClCompile Include="podofo\base\PdfOutputDevice.cpp" />
+    <ClCompile Include="podofo\base\PdfOutputStream.cpp" />
+    <ClCompile Include="podofo\base\PdfParser.cpp" />
+    <ClCompile Include="podofo\base\PdfParserObject.cpp" />
+    <ClCompile Include="podofo\base\PdfRect.cpp" />
+    <ClCompile Include="podofo\base\PdfRefCountedBuffer.cpp" />
+    <ClCompile Include="podofo\base\PdfRefCountedInputDevice.cpp" />
+    <ClCompile Include="podofo\base\PdfReference.cpp" />
+    <ClCompile Include="podofo\base\PdfRijndael.cpp" />
+    <ClCompile Include="podofo\base\PdfStream.cpp" />
+    <ClCompile Include="podofo\base\PdfString.cpp" />
+    <ClCompile Include="podofo\base\PdfTokenizer.cpp" />
+    <ClCompile Include="podofo\base\PdfVariant.cpp" />
+    <ClCompile Include="podofo\base\PdfVecObjects.cpp" />
+    <ClCompile Include="podofo\base\PdfWriter.cpp" />
+    <ClCompile Include="podofo\base\PdfXRef.cpp" />
+    <ClCompile Include="podofo\base\PdfXRefStream.cpp" />
+    <ClCompile Include="podofo\base\PdfXRefStreamParserObject.cpp" />
+    <ClCompile Include="podofo\doc\PdfAcroForm.cpp" />
+    <ClCompile Include="podofo\doc\PdfAction.cpp" />
+    <ClCompile Include="podofo\doc\PdfAnnotation.cpp" />
+    <ClCompile Include="podofo\doc\PdfContents.cpp" />
+    <ClCompile Include="podofo\doc\PdfDestination.cpp" />
+    <ClCompile Include="podofo\doc\PdfDifferenceEncoding.cpp" />
+    <ClCompile Include="podofo\doc\PdfDocument.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="podofo\doc\PdfElement.cpp" />
+    <ClCompile Include="podofo\doc\PdfEncodingObjectFactory.cpp" />
+    <ClCompile Include="podofo\doc\PdfExtGState.cpp" />
+    <ClCompile Include="podofo\doc\PdfField.cpp" />
+    <ClCompile Include="podofo\doc\PdfFileSpec.cpp" />
+    <ClCompile Include="podofo\doc\PdfFont.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontCache.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontCID.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontFactory.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontMetrics.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontMetricsBase14.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontMetricsFreetype.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontMetricsObject.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontSimple.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontTrueType.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontTTFSubset.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontType1.cpp" />
+    <ClCompile Include="podofo\doc\PdfFontType1Base14.cpp" />
+    <ClCompile Include="podofo\doc\PdfFunction.cpp" />
+    <ClCompile Include="podofo\doc\PdfHintStream.cpp" />
+    <ClCompile Include="podofo\doc\PdfIdentityEncoding.cpp" />
+    <ClCompile Include="podofo\doc\PdfImage.cpp" />
+    <ClCompile Include="podofo\doc\PdfInfo.cpp" />
+    <ClCompile Include="podofo\doc\PdfMemDocument.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="podofo\doc\PdfNamesTree.cpp" />
+    <ClCompile Include="podofo\doc\PdfOutlines.cpp" />
+    <ClCompile Include="podofo\doc\PdfPage.cpp" />
+    <ClCompile Include="podofo\doc\PdfPagesTree.cpp" />
+    <ClCompile Include="podofo\doc\PdfPagesTreeCache.cpp" />
+    <ClCompile Include="podofo\doc\PdfPainter.cpp" />
+    <ClCompile Include="podofo\doc\PdfPainterMM.cpp" />
+    <ClCompile Include="podofo\doc\PdfShadingPattern.cpp" />
+    <ClCompile Include="podofo\doc\PdfSignatureField.cpp" />
+    <ClCompile Include="podofo\doc\PdfSignOutputDevice.cpp" />
+    <ClCompile Include="podofo\doc\PdfStreamedDocument.cpp" />
+    <ClCompile Include="podofo\doc\PdfTable.cpp" />
+    <ClCompile Include="podofo\doc\PdfTTFWriter.cpp" />
+    <ClCompile Include="podofo\doc\PdfXObject.cpp" />
+    <ClCompile Include="processor.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="zlib\adler32.c" />
+    <ClCompile Include="zlib\compress.c" />
+    <ClCompile Include="zlib\crc32.c" />
+    <ClCompile Include="zlib\deflate.c" />
+    <ClCompile Include="zlib\gzclose.c" />
+    <ClCompile Include="zlib\gzlib.c" />
+    <ClCompile Include="zlib\gzread.c" />
+    <ClCompile Include="zlib\gzwrite.c" />
+    <ClCompile Include="zlib\infback.c" />
+    <ClCompile Include="zlib\inffast.c" />
+    <ClCompile Include="zlib\inflate.c" />
+    <ClCompile Include="zlib\inftrees.c" />
+    <ClCompile Include="zlib\trees.c" />
+    <ClCompile Include="zlib\uncompr.c" />
+    <ClCompile Include="zlib\zutil.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
